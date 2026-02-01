@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Andrea 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+
+h1 {
+    font-size: 2.6rem;
+    margin-bottom: 40px;
+}
+
+button {
+    padding: 15px 35px;
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin: 15px;
+}
+
+.yes {
+    background: #ff2e63;
+    color: white;
+}
+
+.no {
+    background: #6c757d;
+    color: white;
+    position: absolute;
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    bottom: -10px;
+    animation: floatUp 6s linear infinite;
+    font-size: 24px;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Andrea Sandra Roy,<br>will you be my Valentine? 💘</h1>
+    <button class="yes" onclick="goToLove()">Yes 💖</button>
+    <button class="no" id="noBtn">No 🙈</button>
+</div>
+
+<audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2023/03/28/audio_81d60b75a4.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - noBtn.clientWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.clientHeight);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 300);
+
+function goToLove() {
+    window.location.href = "love.html";
+}
+</script>
+
+</body>
+</html>
